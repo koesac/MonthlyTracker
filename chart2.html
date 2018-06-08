@@ -1,0 +1,87 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "alex";
+ 
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname); 
+
+// Check connection 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());  
+}
+// echo "Connected successfully<br>";
+$sql = "SELECT * FROM `account_values` LEFT JOIN accounts on accounts.ID = account_values.id";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_assoc($result)) {
+echo date_format($row['Timestamp'],'YYYY');
+	
+	
+}
+
+
+$json = substr($json,0,-1) . "]";
+// echo $json;
+// print_r(get_defined_vars());
+
+echo"
+// Create the data table.
+        var data = new google.visualization.DataTable(); \n
+        data.addColumn('string', 'YearMonth'); \n";
+        
+foreach($namearray as $ID => $x_value) {
+	echo "data.addColumn('number', '". $x_value ."'); \n";
+}     
+
+echo "
+      
+
+var chartdata = $json; \n
+
+data.addRows(chartdata); \n";
+
+
+
+mysqli_close($conn);
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
